@@ -1,0 +1,35 @@
+{% extends 'store/main.html' %}
+{% load static %}
+
+{% block navbar %}
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" href="{% url 'store' %}">Ecom</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                <a class="nav-link" href="{% url 'store' %}">Store <span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+		</div>
+	</nav>
+{% endblock %}
+
+{% block content %}
+    <div class="box-element">
+        <h2 style="margin-bottom: 20px;">Register</h2>
+        <hr style="margin-bottom: 30px;">
+
+        <form method="post">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input style="width: 20%;" class="btn btn-success" type="submit" value="Register">
+        </form>
+    
+        <a style="margin-top: 15px; width: 20%; display: block;" class="btn btn-secondary" href="{% url 'login' %}">Back to login</a>
+        <a style="margin-top: 15px; width: 20%; display: block;" class="btn btn-info" href="{% url 'store' %}">Back to store</a>
+    </div>
+{% endblock %}

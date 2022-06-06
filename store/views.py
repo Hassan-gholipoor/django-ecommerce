@@ -1,9 +1,16 @@
-from django.shortcuts import render
-from django.http import JsonResponse
 import json
 import datetime
+
+from django.shortcuts import render
+from django.http import JsonResponse
+from django.urls import reverse_lazy
+from django.contrib.auth.forms import UserCreationForm
+from django.views.generic.edit import CreateView
+
 from .models import * 
 from .utils import cookieCart, cartData, guestOrder
+
+
 
 def store(request):
 	data = cartData(request)
@@ -98,3 +105,9 @@ def processOrder(request):
 		)
 
 	return JsonResponse('Payment submitted..', safe=False)
+
+
+class SignUp(CreateView):
+    form_class = UserCreationForm
+    success_url = reverse_lazy("login")
+    template_name = "registration/signup.html"
