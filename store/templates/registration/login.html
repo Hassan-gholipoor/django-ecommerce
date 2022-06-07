@@ -19,18 +19,24 @@
 {% endblock %}
 
 {% block content %}
-    <div class="box-element">
-        <h2 style="margin-bottom: 15px;">Login</h2>
-        <hr style="margin-bottom: 15px;">
-        <form method="post">
-          {% csrf_token %}
-          <table>
-            {{ form.as_p }}
-            <tr>
-              <td>&nbsp;</td>
-              <input style="width: 25%; display: block;" class="btn btn-success" type="submit" value="Submit">
-            </tr>                
-          </table>
-        </form>
+  <div class="row">
+    <div class="col-lg-3">
+
     </div>
+
+    <div class="col-lg-6">
+      <div class="box-element">
+        <h2 style="margin-bottom: 15px; text-align: center; display: block;">Login</h2>
+        <hr style="margin-bottom: 15px;">
+        <form method="post"> {% csrf_token %}
+            <center>
+              {{ form.as_p }}
+
+              <input style="width: 50%; display: block;" class="btn btn-success" type="submit" value="Submit">
+            </center>
+
+        </form>
+      </div>       
+    </div>
+  </div>
 {% endblock %}

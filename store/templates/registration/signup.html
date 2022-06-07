@@ -19,17 +19,61 @@
 {% endblock %}
 
 {% block content %}
-    <div class="box-element">
-        <h2 style="margin-bottom: 20px;">Register</h2>
-        <hr style="margin-bottom: 30px;">
+    <div class="row">
+        <div class="col-lg-3">
 
-        <form method="post">
-            {% csrf_token %}
-            {{form.as_p}}
-            <input style="width: 20%;" class="btn btn-success" type="submit" value="Register">
-        </form>
-    
-        <a style="margin-top: 15px; width: 20%; display: block;" class="btn btn-secondary" href="{% url 'login' %}">Back to login</a>
-        <a style="margin-top: 15px; width: 20%; display: block;" class="btn btn-info" href="{% url 'store' %}">Back to store</a>
+        </div>
+        <div class="col-lg-6">
+            <div class="box-element">
+                <center>
+                    <h2 style="margin-bottom: 20px;">Register</h2>
+
+                </center>
+                <hr style="margin-bottom: 30px;">
+        
+                <form method="post" >  
+                    {% csrf_token %}  
+                    <center>
+                        <div>
+                            <h5 style="display: block;">Username</h5>
+                            {{ form.username }}
+                        </div>
+                        <div>
+                            <h5 style="display: block; margin: 10px 0px;">Password</h5>
+                            {{ form.password1 }}
+                        </div>
+                        <div>
+                            <h5 style="display: block; margin: 10px 0px;">Confirm password</h5>
+                            {{ form.password2 }}
+                        </div>
+                        <div>
+                            <h5 style="display: block; margin: 10px 0px;">Email</h5>
+                            {{ form.email }}
+                        </div>
+                        
+                        <div style="margin: 20px 0px;">
+                            {% if form.errors %}
+                                {% for field in form %}
+                                    {% for error in field.errors %} 
+                                        <div class="alert alert-danger">
+                                            <strong>{{ error|escape }}</strong>
+                                        </div>
+                                    {% endfor %}
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+
+
+                        <input style="margin-top: 25px; width: 50%; display: block;" class="btn btn-success" type="submit" name="submit" value="Register" />
+                    </center>
+                </form>  
+            
+                <center>
+                    <a style="margin-top: 15px; width: 50%; display: block;" class="btn btn-secondary" href="{% url 'login' %}">Back to login</a>
+                    <a style="margin-top: 15px; width: 50%; display: block;" class="btn btn-info" href="{% url 'store' %}">Back to store</a>
+                </center>
+            </div>
+        </div>
     </div>
+
 {% endblock %}
